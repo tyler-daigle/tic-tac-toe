@@ -1,0 +1,54 @@
+.btn {
+  text-transform: uppercase;
+  color: var(--button-text-color);
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.btnPrimary {
+  display: block;
+  width: 100%;
+}
+
+.btnSecondary {
+}
+
+.btnPrimary.btnYellow {
+  box-shadow: 0px 8px 0px var(--yellow-button-shadow);
+}
+
+.btnPrimary.btnBlue {
+  box-shadow: 0px 8px 0px var(--blue-button-shadow);
+}
+
+.btnYellow {
+  background-color: var(--yellow-button-bg);
+  box-shadow: 0px 4px 0px var(--yellow-button-shadow);
+}
+
+.btnYellow:hover,
+.btnYellow:active {
+  background-color: var(--yellow-button-bg-hover);
+}
+
+.btnBlue {
+  background-color: var(--blue-button-bg);
+  box-shadow: 0px 4px 0px var(--blue-button-shadow);
+}
+
+.btnBlue:hover,
+.btnBlue:active {
+  background-color: var(--blue-button-bg-hover);
+}
+
+.btnGray {
+  background-color: var(--gray-button-bg);
+  box-shadow: 0px 4px 0px var(--gray-button-shadow);
+}
+
+.btnGray:hover,
+.btnGray:active {
+  background-color: var(--gray-button-bg-hover);
+}
