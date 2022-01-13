@@ -16,15 +16,15 @@
   border-radius: 15px;
   margin: 1.5rem 0;
   display: flex;
-  /* justify-content: space-between; */
-  align-items: center;
 }
 
 .playerIcon {
   width: 50%;
   margin: 1rem;
   border-radius: 15px;
-  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .playerIconSelected {
@@ -36,6 +36,6 @@
 }
 
 .playerSvg {
-  height: 55px;
+  height: 80%;
   width: auto;
 }

@@ -29,6 +29,7 @@ export default function PlayerIconSelector({ onSelected }) {
     <div className={styles.iconSelectorContainer}>
       <h2 className="heading heading-x-small">PICK PLAYER 1'S MARK</h2>
 
+      {/* X and O selector */}
       <div className={styles.selector}>
         <div onClick={() => selectPlayer(0)} className={playerXclass}>
           <img
