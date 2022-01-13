@@ -15,6 +15,9 @@
   --gray-button-shadow: #6b8997;
 
   --button-text-color: #1a2a33;
+
+  --player-select-bg-color: #1f3641;
+  --selector-bg-color: #1a2a33;
 }
 
 * {
@@ -37,11 +40,13 @@ body {
 }
 
 p {
+  font-weight: 400;
 }
 
 .heading {
   font-weight: bold;
   color: var(--primary-text-color);
+  text-align: center;
 }
 
 .heading-large {

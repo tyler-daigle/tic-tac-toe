@@ -1,0 +1,41 @@
+.iconSelectorContainer {
+  text-align: center;
+  border-radius: 15px;
+  padding: 1.5rem;
+  background-color: var(--player-select-bg-color);
+  box-shadow: 0px 8px 0px #10212a;
+  margin: 1.5rem 0;
+}
+
+.iconGray {
+  color: gray;
+}
+
+.selector {
+  background-color: var(--selector-bg-color);
+  border-radius: 15px;
+  margin: 1.5rem 0;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+
+.playerIcon {
+  width: 50%;
+  margin: 1rem;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.playerIconSelected {
+  background-color: #a8bfc9;
+}
+
+.playerIconDark {
+  background-color: gray;
+}
+
+.playerSvg {
+  height: 55px;
+  width: auto;
+}
