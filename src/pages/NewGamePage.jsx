@@ -1,13 +1,20 @@
+import Button from "../components/Button";
 import PlayerIconSelector from "../components/PlayerIconSelector";
 
 import styles from "../style/NewGamePage.module.css";
 
-import xIconOutline from "../assets/icon-x-outline.svg";
 import xIconSolid from "../assets/icon-x.svg";
-import oIconOutline from "../assets/icon-o-outline.svg";
 import oIconSolid from "../assets/icon-o.svg";
 
+import { useNavigate } from "react-router-dom";
+
 export default function NewGamePage() {
+  const navigate = useNavigate();
+
+  const handleSelectChange = (selected) => {
+    console.log(`Player ${selected} chosen`);
+  };
+
   return (
     <div className={styles.newGameContainer}>
       <div className={styles.playerIconContainer}>
@@ -23,10 +30,20 @@ export default function NewGamePage() {
         />
       </div>
 
-      <PlayerIconSelector />
-      <h1>Starting a new game</h1>
-      <h1>Starting a new game</h1>
-      <h1>Starting a new game</h1>
+      <PlayerIconSelector onSelected={handleSelectChange} />
+
+      <div className={styles.buttonContainer}>
+        <Button
+          type="primary"
+          color="yellow"
+          onClick={() => navigate("/start")}
+        >
+          NEW GAME (VS CPU)
+        </Button>
+        <Button type="primary" color="blue">
+          NEW GAME (VS PLAYER)
+        </Button>
+      </div>
     </div>
   );
 }

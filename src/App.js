@@ -1,4 +1,5 @@
 import NewGamePage from "./pages/NewGamePage";
+import TicTacToe from "./pages/TicTacToe";
 
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "./global.css";
@@ -9,7 +10,8 @@ export default function App() {
     <GameContainer>
       <Router>
         <Routes>
-          <Route exact path="/newgame" element={<NewGamePage />} />
+          <Route exact path="/" element={<NewGamePage />} />
+          <Route exact path="/start" element={<TicTacToe />} />
         </Routes>
       </Router>
     </GameContainer>
