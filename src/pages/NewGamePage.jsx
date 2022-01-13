@@ -8,6 +8,9 @@ import oIconSolid from "../assets/icon-o.svg";
 
 import { useNavigate } from "react-router-dom";
 
+// TODO: add context and set the currently selected player icon
+// in the state.
+
 export default function NewGamePage() {
   const navigate = useNavigate();
 
@@ -26,7 +29,7 @@ export default function NewGamePage() {
         <img
           className={styles.playerIcon}
           src={oIconSolid}
-          alt="Player O Icon"
+          alt="Player Circle Icon"
         />
       </div>
 
