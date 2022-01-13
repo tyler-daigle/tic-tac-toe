@@ -16,8 +16,9 @@ export default function GameProvider({ children }) {
   });
 
   const [board, setBoard] = useState(gameBoard.getBoard());
+  const [currentPlayer, setCurrentPlayer] = useState(PlayerMarker.X);
 
-  const setPlayerOne = (playerMarker) => {
+  const setPlayerOneMarker = (playerMarker) => {
     // set the player marker of player 1
     const newPlayers = {
       playerOne: {
@@ -33,10 +34,37 @@ export default function GameProvider({ children }) {
     };
     setPlayers(newPlayers);
   };
+
+  const nextPlayer = () => {
+    if (currentPlayer === PlayerMarker.X) {
+      setCurrentPlayer(PlayerMarker.Circle);
+    } else {
+      setCurrentPlayer(PlayerMarker.X);
+    }
+  };
+
+  const getSquare = (squareNum) => gameBoard.getSquare(squareNum);
+  const setSquare = (squareNum, marker) => {
+    gameBoard.setSquare(squareNum, marker);
+    setBoard(gameBoard.getBoard());
+  };
+  const checkForWinner = () => gameBoard.checkForWinner();
+
   console.log(players);
 
   return (
-    <GameContext.Provider value={{ players, board, setPlayerOne }}>
+    <GameContext.Provider
+      value={{
+        currentPlayer,
+        players,
+        board,
+        setPlayerOneMarker,
+        nextPlayer,
+        setSquare,
+        getSquare,
+        checkForWinner,
+      }}
+    >
       {children}
     </GameContext.Provider>
   );

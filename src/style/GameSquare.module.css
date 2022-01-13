@@ -1,0 +1,6 @@
+.gameSquare {
+  border: solid 1px green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

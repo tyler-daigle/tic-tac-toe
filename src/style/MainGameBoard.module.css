@@ -1,0 +1,7 @@
+.gameBoardContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  height: 60vh;
+  gap: 1rem;
+}

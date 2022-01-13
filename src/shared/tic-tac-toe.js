@@ -8,8 +8,72 @@ class TicTacToe {
   }
 
   getBoard() {
-    return { ...this.board };
+    return [...this.board];
   }
+
+  setSquare(squareNum, marker) {
+    if (squareNum < 0 || squareNum > 8) {
+      return;
+    }
+
+    this.board[squareNum].player = marker;
+  }
+
+  getSquare(squareNum) {
+    if (squareNum < 0 || squareNum > 8) {
+      return undefined;
+    }
+    return this.board[squareNum].player;
+  }
+
+  checkForWinner() {
+    // check rows
+    if (checkEvery(this.board.slice(0, 3))) {
+      return { win: true, player: this.board[0].player, squares: [0, 1, 2] };
+    }
+
+    if (checkEvery(this.board.slice(3, 6))) {
+      return { win: true, player: this.board[3].player, squares: [3, 4, 5] };
+    }
+
+    if (checkEvery(this.board.slice(6))) {
+      return { win: true, player: this.board[6].player, squares: [6, 7, 8] };
+    }
+
+    // check columns
+    const col0 = [this.board[0], this.board[3], this.board[6]];
+    const col1 = [this.board[1], this.board[4], this.board[7]];
+    const col2 = [this.board[2], this.board[5], this.board[8]];
+
+    if (checkEvery(col0)) {
+      return { win: true, player: this.board[0].player, squares: [0, 3, 6] };
+    }
+    if (checkEvery(col1)) {
+      return { win: true, player: this.board[1].player, squares: [1, 4, 7] };
+    }
+    if (checkEvery(col2)) {
+      return { win: true, player: this.board[2].player, squares: [2, 5, 8] };
+    }
+
+    // check diagonals
+    const diag0 = [this.board[0], this.board[4], this.board[8]];
+    const diag1 = [this.board[2], this.board[4], this.board[6]];
+    if (checkEvery(diag0)) {
+      return { win: true, player: this.board[0].player, squares: [0, 4, 8] };
+    }
+    if (checkEvery(diag1)) {
+      return { win: true, player: this.board[2].player, squares: [2, 4, 6] };
+    }
+    return { win: false, player: PlayerMarker.Empty, squares: [] };
+  }
+}
+
+function checkEvery(squares) {
+  return squares.every(
+    (square) =>
+      square.player === squares[0].player &&
+      square.player !== PlayerMarker.Empty
+  );
 }
 
 export const PlayerMarker = {

@@ -16,11 +16,11 @@ import oIconSolid from "../assets/icon-o.svg";
 
 export default function NewGamePage() {
   const navigate = useNavigate();
-  const { setPlayerOne } = useContext(GameContext);
+  const { setPlayerOneMarker } = useContext(GameContext);
 
   const handleSelectChange = (selectedPlayerMarker) => {
     console.log(`Player ${selectedPlayerMarker} chosen`);
-    setPlayerOne(selectedPlayerMarker);
+    setPlayerOneMarker(selectedPlayerMarker);
   };
 
   return (
