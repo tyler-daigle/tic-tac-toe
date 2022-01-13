@@ -1,3 +1,8 @@
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+
+import { GameContext } from "../context/GameContext";
+
 import Button from "../components/Button";
 import PlayerIconSelector from "../components/PlayerIconSelector";
 
@@ -6,16 +11,16 @@ import styles from "../style/NewGamePage.module.css";
 import xIconSolid from "../assets/icon-x.svg";
 import oIconSolid from "../assets/icon-o.svg";
 
-import { useNavigate } from "react-router-dom";
-
 // TODO: add context and set the currently selected player icon
 // in the state.
 
 export default function NewGamePage() {
   const navigate = useNavigate();
+  const { setPlayerOne } = useContext(GameContext);
 
-  const handleSelectChange = (selected) => {
-    console.log(`Player ${selected} chosen`);
+  const handleSelectChange = (selectedPlayerMarker) => {
+    console.log(`Player ${selectedPlayerMarker} chosen`);
+    setPlayerOne(selectedPlayerMarker);
   };
 
   return (

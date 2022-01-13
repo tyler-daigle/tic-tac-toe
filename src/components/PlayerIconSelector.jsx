@@ -8,21 +8,23 @@ import oIconDark from "../assets/icon-o-dark.svg";
 import xIconGray from "../assets/icon-x-gray.svg";
 import xIconDark from "../assets/icon-x-dark.svg";
 
+import { PlayerMarker } from "../shared/tic-tac-toe";
+
 export default function PlayerIconSelector({ onSelected }) {
   // player 0 is X, player 1 is Circle
-  const [selectedPlayer, setSelectedPlayer] = useState(0);
+  const [selectedIcon, setSelectedIcon] = useState(PlayerMarker.X);
 
   const selectPlayer = (playerNum) => {
-    setSelectedPlayer(playerNum);
+    setSelectedIcon(playerNum);
     onSelected(playerNum);
   };
 
   // set the playerIconSelected class on whichever icon is selected
   const playerXclass = `${styles.playerIcon} ${
-    selectedPlayer === 0 ? styles.playerIconSelected : ""
+    selectedIcon === PlayerMarker.X ? styles.playerIconSelected : ""
   }`;
   const playerOclass = `${styles.playerIcon} ${
-    selectedPlayer === 1 ? styles.playerIconSelected : ""
+    selectedIcon === PlayerMarker.Circle ? styles.playerIconSelected : ""
   }`;
 
   return (
@@ -31,18 +33,24 @@ export default function PlayerIconSelector({ onSelected }) {
 
       {/* X and O selector */}
       <div className={styles.selector}>
-        <div onClick={() => selectPlayer(0)} className={playerXclass}>
+        <div
+          onClick={() => selectPlayer(PlayerMarker.X)}
+          className={playerXclass}
+        >
           <img
             className={styles.playerSvg}
-            src={selectedPlayer === 0 ? xIconDark : xIconGray}
+            src={selectedIcon === PlayerMarker.X ? xIconDark : xIconGray}
             alt="Player X Icon"
           />
         </div>
 
-        <div onClick={() => selectPlayer(1)} className={playerOclass}>
+        <div
+          onClick={() => selectPlayer(PlayerMarker.Circle)}
+          className={playerOclass}
+        >
           <img
             className={styles.playerSvg}
-            src={selectedPlayer === 1 ? oIconDark : oIconGray}
+            src={selectedIcon === PlayerMarker.Circle ? oIconDark : oIconGray}
             alt="Player O Icon"
           />
         </div>
