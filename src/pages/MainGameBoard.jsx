@@ -16,6 +16,8 @@ export default function TicTacToe() {
     getSquare,
     setSquare,
     checkForWinner,
+    addWin,
+    addTie,
   } = useContext(GameContext);
 
   const [winningSquares, setWinningSquares] = useState([]);
@@ -36,7 +38,15 @@ export default function TicTacToe() {
       console.log(winner);
       if (winner.win) {
         console.log(winner);
+        addWin({ player: winner.player, points: 1 });
         setWinningSquares([...winner.squares]);
+        setGameOver(true);
+        return;
+      }
+
+      if (winner.tie === true) {
+        console.log("TIE?");
+        addTie();
         setGameOver(true);
         return;
       }

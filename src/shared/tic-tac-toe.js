@@ -74,13 +74,17 @@ class TicTacToe {
 
     // if we get here and there was no winner, check for a tie - every
     // square is set but no one won
-    if (this.board.includes(PlayerMarker.Empty)) {
-      // if there is at least one empty square still the game continues
-      return { win: false, player: PlayerMarker.Empty, squares: [] };
-    } else {
-      // there are no more empty squares so it is a tie
-      return { win: false, tie: true };
+    for (let square = 0; square < this.board.length; square++) {
+      // we can return as soon as we find an empty square because
+      // if there is at least one empty square the game continues
+      if (this.board[square].player === PlayerMarker.Empty) {
+        return { win: false, player: PlayerMarker.Empty, squares: [] };
+      }
     }
+
+    // if we get here all the squares were set and there was no winner
+    // so it is a tie.
+    return { win: false, tie: true };
   }
 }
 

@@ -49,12 +49,25 @@ export default function GameProvider({ children }) {
     gameBoard.setSquare(squareNum, marker);
     setBoard(gameBoard.getBoard());
   };
+
   const checkForWinner = () => gameBoard.checkForWinner();
+
+  const addWin = (win) => {
+    if (win.player === PlayerMarker.X) {
+      setScore({ ...score, x: score.x + win.points });
+    } else {
+      setScore({ ...score, circle: score.circle + win.points });
+    }
+  };
+
+  const addTie = () => setScore({ ...score, ties: score.ties + 1 });
+
   const restartGame = () => {
     gameBoard.reset();
     setBoard(gameBoard.getBoard());
     // set x to be the current player since x always goes first
     setCurrentPlayer(PlayerMarker.X);
+    setScore({ x: 0, circle: 0, ties: 0 });
     // it will be up to component to navigate back to new game page
   };
 
@@ -73,6 +86,8 @@ export default function GameProvider({ children }) {
         checkForWinner,
         restartGame,
         score,
+        addWin,
+        addTie,
       }}
     >
       {children}
