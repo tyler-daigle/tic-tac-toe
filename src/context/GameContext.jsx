@@ -49,6 +49,13 @@ export default function GameProvider({ children }) {
     setBoard(gameBoard.getBoard());
   };
   const checkForWinner = () => gameBoard.checkForWinner();
+  const restartGame = () => {
+    gameBoard.reset();
+    setBoard(gameBoard.getBoard());
+    // set x to be the current player since x always goes first
+    setCurrentPlayer(PlayerMarker.X);
+    // it will be up to component to navigate back to new game page
+  };
 
   console.log(players);
 
@@ -63,6 +70,7 @@ export default function GameProvider({ children }) {
         setSquare,
         getSquare,
         checkForWinner,
+        restartGame,
       }}
     >
       {children}

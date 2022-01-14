@@ -20,7 +20,9 @@ export default function PlayerTurnLabel({ currentPlayer }) {
           alt="Player Circle Gray Icon"
         />
       )}
-      <span className={styles.turnLabel}>TURN</span>
+      <span className={styles.turnLabel + " heading heading-x-small"}>
+        TURN
+      </span>
     </div>
   );
 }

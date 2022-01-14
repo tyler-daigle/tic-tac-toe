@@ -7,6 +7,13 @@ class TicTacToe {
     }
   }
 
+  reset() {
+    this.board = [];
+    for (let i = 0; i < 9; i++) {
+      this.board.push({ player: PlayerMarker.Empty });
+    }
+  }
+
   getBoard() {
     return [...this.board];
   }
@@ -64,7 +71,16 @@ class TicTacToe {
     if (checkEvery(diag1)) {
       return { win: true, player: this.board[2].player, squares: [2, 4, 6] };
     }
-    return { win: false, player: PlayerMarker.Empty, squares: [] };
+
+    // if we get here and there was no winner, check for a tie - every
+    // square is set but no one won
+    if (this.board.includes(PlayerMarker.Empty)) {
+      // if there is at least one empty square still the game continues
+      return { win: false, player: PlayerMarker.Empty, squares: [] };
+    } else {
+      // there are no more empty squares so it is a tie
+      return { win: false, tie: true };
+    }
   }
 }
 

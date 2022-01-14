@@ -1,7 +1,14 @@
 import PropTypes from "prop-types";
 import styles from "../style/Button.module.css";
 
-export default function Button({ type, color, children, size, onClick }) {
+export default function Button({
+  type,
+  color,
+  children,
+  size,
+  onClick,
+  style,
+}) {
   let buttonClasses = "";
 
   switch (type) {
@@ -32,7 +39,11 @@ export default function Button({ type, color, children, size, onClick }) {
     buttonClasses += ` ${styles.btnLarge} `;
   }
   return (
-    <button onClick={onClick} className={`${styles.btn} ${buttonClasses}`}>
+    <button
+      style={style}
+      onClick={onClick}
+      className={`${styles.btn} ${buttonClasses}`}
+    >
       {children}
     </button>
   );
