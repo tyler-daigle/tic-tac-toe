@@ -17,6 +17,7 @@ export default function Button({
       break;
 
     case "secondary":
+    default:
       buttonClasses += ` ${styles.btnSecondary} `;
       break;
   }
@@ -31,6 +32,7 @@ export default function Button({
       break;
 
     case "gray":
+    default:
       buttonClasses += ` ${styles.btnGray} `;
       break;
   }

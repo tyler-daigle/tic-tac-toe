@@ -24,6 +24,8 @@ export default function GameSquare({
       square = winningSquare ? playerCircleDark : playerCircle;
       altText = "Player Circle Marker";
       break;
+    default:
+      throw new Error("This shouldn't be possible - but we need a default");
   }
 
   return (

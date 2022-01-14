@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { GameContext } from "../context/GameContext";
-import { PlayerMarker } from "../shared/tic-tac-toe";
 
 import PlayerTurnLabel from "./PlayerTurnLabel";
 import Button from "./Button";
