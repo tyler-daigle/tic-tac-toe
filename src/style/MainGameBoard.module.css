@@ -1,10 +1,18 @@
 .gameBoardContainer {
   display: grid;
 
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  /* height: 60vh; */
-  height: 600px;
-  grid-gap: 2.5rem;
-  /* border: dashed 1px red; */
+  grid-template-columns: repeat(3, 90px);
+  grid-template-rows: repeat(3, 90px);
+  width: calc(90px * 3 + 25px * 3);
+  grid-gap: 25px;
+  margin: 0 auto;
+  padding-left: 12px;
+}
+
+@media (min-width: 600px) {
+  .gameBoardContainer {
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: repeat(3, 150px);
+    width: calc(150px * 3 + 25px * 3);
+  }
 }

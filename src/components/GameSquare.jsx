@@ -33,7 +33,9 @@ export default function GameSquare({
         winningSquare && styles.winningSquare
       }`}
     >
-      {marker !== PlayerMarker.Empty && <img src={square} alt={altText} />}
+      {marker !== PlayerMarker.Empty && (
+        <img className={styles.playerMarkerImg} src={square} alt={altText} />
+      )}
     </div>
   );
 }
