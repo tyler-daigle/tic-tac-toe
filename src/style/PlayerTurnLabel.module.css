@@ -1,0 +1,19 @@
+.playerTurnLabelContainer {
+  display: flex;
+  background-color: #1f3641;
+  box-shadow: 0px 4px 0px #10212a;
+  border-radius: 5px;
+  padding: 15px;
+  align-items: center;
+  gap: 1rem;
+}
+
+.turnMarker {
+  height: 1.5rem;
+  width: auto;
+}
+
+.turnLabel {
+  font-weight: bold;
+  font-size: 1.5rem;
+}

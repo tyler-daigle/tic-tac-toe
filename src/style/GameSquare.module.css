@@ -7,11 +7,6 @@
   align-items: center;
 }
 
-.gameSquare::before {
-  content: "";
-  padding-bottom: 100%;
-}
-
 .winningSquare {
   background-color: #f2b137;
   box-shadow: 0px 8px 0px #cc8b13;

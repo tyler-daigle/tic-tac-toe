@@ -2,8 +2,10 @@ import styles from "../style/MainGameBoard.module.css";
 
 import { useContext, useState } from "react";
 import { GameContext } from "../context/GameContext";
-import GameSquare from "../components/GameSquare";
 import { PlayerMarker } from "../shared/tic-tac-toe";
+
+import GameSquare from "../components/GameSquare";
+import GameHeader from "../components/GameHeader";
 
 export default function TicTacToe() {
   const {
@@ -46,8 +48,7 @@ export default function TicTacToe() {
   console.log(winningSquares);
   return (
     <div>
-      <h1>Game Board</h1>
-      <h2>Current Player: {currentPlayer === PlayerMarker.X ? "X" : "O"}</h2>
+      <GameHeader currentPlayer={currentPlayer} />
 
       {/* Start of the main game board display */}
       <div className={styles.gameBoardContainer}>
