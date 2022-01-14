@@ -17,6 +17,7 @@ export default function GameProvider({ children }) {
 
   const [board, setBoard] = useState(gameBoard.getBoard());
   const [currentPlayer, setCurrentPlayer] = useState(PlayerMarker.X);
+  const [score, setScore] = useState({ x: 0, circle: 0, ties: 0 });
 
   const setPlayerOneMarker = (playerMarker) => {
     // set the player marker of player 1
@@ -71,6 +72,7 @@ export default function GameProvider({ children }) {
         getSquare,
         checkForWinner,
         restartGame,
+        score,
       }}
     >
       {children}

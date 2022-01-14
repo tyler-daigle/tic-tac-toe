@@ -6,6 +6,7 @@ import { PlayerMarker } from "../shared/tic-tac-toe";
 
 import GameSquare from "../components/GameSquare";
 import GameHeader from "../components/GameHeader";
+import ScoreBoard from "../components/ScoreBoard";
 
 export default function TicTacToe() {
   const {
@@ -70,6 +71,7 @@ export default function TicTacToe() {
         })}
       </div>
       {/* end of main game board display */}
+      <ScoreBoard />
     </div>
   );
 }
