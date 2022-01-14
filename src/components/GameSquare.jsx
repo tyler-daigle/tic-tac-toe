@@ -25,7 +25,7 @@ export default function GameSquare({
       altText = "Player Circle Marker";
       break;
     default:
-      throw new Error("This shouldn't be possible - but we need a default");
+    // nothing - just an empty div here
   }
 
   return (
