@@ -12,6 +12,7 @@ import styles from "../style/NewGamePage.module.css";
 
 import xIconSolid from "../assets/icon-x.svg";
 import oIconSolid from "../assets/icon-o.svg";
+import About from "../components/About";
 
 export default function NewGamePage() {
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ export default function NewGamePage() {
             NEW GAME (VS PLAYER)
           </Button>
         </div>
+        <About />
       </div>
     </GameContainer>
   );

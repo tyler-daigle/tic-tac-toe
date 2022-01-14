@@ -16,7 +16,7 @@ export default function GameHeader({ currentPlayer }) {
   const navigate = useNavigate();
 
   const reset = () => {
-    restartGame();
+    restartGame(true);
     navigate("/");
   };
 
