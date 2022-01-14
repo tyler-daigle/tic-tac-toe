@@ -48,6 +48,8 @@ export default function TicTacToe() {
     <div>
       <h1>Game Board</h1>
       <h2>Current Player: {currentPlayer === PlayerMarker.X ? "X" : "O"}</h2>
+
+      {/* Start of the main game board display */}
       <div className={styles.gameBoardContainer}>
         {board.map((square, num) => {
           let winningSquare = false;
@@ -66,6 +68,7 @@ export default function TicTacToe() {
           );
         })}
       </div>
+      {/* end of main game board display */}
     </div>
   );
 }
