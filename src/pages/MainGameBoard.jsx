@@ -1,5 +1,7 @@
 import styles from "../style/MainGameBoard.module.css";
 
+import { useNavigate } from "react-router-dom";
+
 import { useContext, useState } from "react";
 import { GameContext } from "../context/GameContext";
 import { PlayerMarker } from "../shared/tic-tac-toe";
@@ -14,7 +16,7 @@ import GameContainer from "../components/GameContainer";
 import xIcon from "../assets/icon-x.svg";
 import circleIcon from "../assets/icon-o.svg";
 
-export default function TicTacToe() {
+export default function MainGameBoard() {
   const {
     board,
     currentPlayer,
@@ -27,28 +29,28 @@ export default function TicTacToe() {
     addTie,
     gameDialogVisible,
     toggleGameDialog,
+    restartGame,
   } = useContext(GameContext);
 
   const [winningSquares, setWinningSquares] = useState([]);
   const [gameOver, setGameOver] = useState(false);
   const [currentWinner, setCurrentWinner] = useState(PlayerMarker.Empty);
   const [isTie, setIsTie] = useState(false);
+  const navigate = useNavigate();
 
   const squareClickHandler = (squareNum) => {
     if (gameOver) {
       return;
     }
-    console.log(`Square ${squareNum} clicked`);
-    // get the click
-    // check if the square is empty
+
     if (getSquare(squareNum) === PlayerMarker.Empty) {
       // set the current player to that square
       setSquare(squareNum, currentPlayer);
+
       // check for a winner or check if all squares are filled
       let winner = checkForWinner();
 
       if (winner.win) {
-        console.log(winner);
         addWin({ player: winner.player, points: 1 });
         setCurrentWinner(winner.player);
         setWinningSquares([...winner.squares]);
@@ -64,13 +66,24 @@ export default function TicTacToe() {
         toggleGameDialog();
         return;
       }
-      // switch to the next player
+
+      // switch to the next player and the game continues
       nextPlayer();
     }
   };
 
-  const startNextGame = () => console.log("Starting next game");
-  const quitGame = () => console.log("Quitting Game");
+  const handleQuitClick = () => {
+    setGameOver(false);
+    restartGame(true);
+    setIsTie(false);
+    navigate("/");
+  };
+
+  const handleNextRoundClick = () => {
+    setGameOver(false);
+    setIsTie(false);
+    restartGame();
+  };
 
   return (
     <>
@@ -82,9 +95,11 @@ export default function TicTacToe() {
           {board.map((square, num) => {
             let winningSquare = false;
 
+            // mark the winning squares
             if (gameOver && winningSquares.includes(num)) {
               winningSquare = true;
             }
+
             return (
               <GameSquare
                 key={num}
@@ -97,12 +112,13 @@ export default function TicTacToe() {
           })}
         </div>
         {/* end of main game board display */}
+
         <ScoreBoard />
       </GameContainer>
 
       {/* The <GameOverDialog> that will display once a game ends */}
       {gameDialogVisible && (
-        <GameOverDialog dialogNext={startNextGame} dialogQuit={quitGame}>
+        <GameOverDialog>
           <WinningMessage
             winningPlayer={currentWinner}
             players={players}
@@ -110,10 +126,14 @@ export default function TicTacToe() {
           />
 
           <div className={styles.dialogButtonContainer}>
-            <Button type="secondary" color="gray">
+            <Button type="secondary" color="gray" onClick={handleQuitClick}>
               QUIT
             </Button>
-            <Button type="secondary" color="yellow">
+            <Button
+              type="secondary"
+              color="yellow"
+              onClick={handleNextRoundClick}
+            >
               NEXT ROUND
             </Button>
           </div>

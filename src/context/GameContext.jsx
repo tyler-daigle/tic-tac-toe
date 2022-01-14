@@ -63,12 +63,15 @@ export default function GameProvider({ children }) {
 
   const addTie = () => setScore({ ...score, ties: score.ties + 1 });
 
-  const restartGame = () => {
+  const restartGame = (resetScore = false) => {
     gameBoard.reset();
     setBoard(gameBoard.getBoard());
     // set x to be the current player since x always goes first
     setCurrentPlayer(PlayerMarker.X);
-    setScore({ x: 0, circle: 0, ties: 0 });
+    if (resetScore) {
+      setScore({ x: 0, circle: 0, ties: 0 });
+    }
+
     setGameDialogVisible(false);
     // it will be up to the component to navigate back to new game page
   };
