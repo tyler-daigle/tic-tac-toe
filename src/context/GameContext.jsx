@@ -18,6 +18,7 @@ export default function GameProvider({ children }) {
   const [board, setBoard] = useState(gameBoard.getBoard());
   const [currentPlayer, setCurrentPlayer] = useState(PlayerMarker.X);
   const [score, setScore] = useState({ x: 0, circle: 0, ties: 0 });
+  const [gameDialogVisible, setGameDialogVisible] = useState(false);
 
   const setPlayerOneMarker = (playerMarker) => {
     // set the player marker of player 1
@@ -68,10 +69,11 @@ export default function GameProvider({ children }) {
     // set x to be the current player since x always goes first
     setCurrentPlayer(PlayerMarker.X);
     setScore({ x: 0, circle: 0, ties: 0 });
-    // it will be up to component to navigate back to new game page
+    setGameDialogVisible(false);
+    // it will be up to the component to navigate back to new game page
   };
 
-  console.log(players);
+  const toggleGameDialog = () => setGameDialogVisible(!gameDialogVisible);
 
   return (
     <GameContext.Provider
@@ -88,6 +90,8 @@ export default function GameProvider({ children }) {
         score,
         addWin,
         addTie,
+        gameDialogVisible,
+        toggleGameDialog,
       }}
     >
       {children}
