@@ -45,7 +45,9 @@ export default function MainGameBoard() {
       if (currentPlayer === playerMarkers.playerTwo) {
         const cpuSquare = getCpuMove();
         if (cpuSquare !== undefined) {
-          squareClickHandler(cpuSquare);
+          setTimeout(() => {
+            squareClickHandler(cpuSquare);
+          }, 300);
         }
       }
     }
