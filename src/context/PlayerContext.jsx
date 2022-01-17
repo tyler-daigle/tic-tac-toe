@@ -13,9 +13,8 @@ export default function PlayerProvider({ children }) {
     playerTwo: PlayerMarker.Circle,
   });
 
-  // helper functions that will be passed in the context
+  // sets the marker of player 1 and sets player 2 marker to the other option
   const setPlayerOneMarker = (marker) => {
-    // sets the marker of player 1 and sets player 2 marker to the other option
     const newPlayers = {};
     newPlayers.playerOne = marker;
     if (marker === PlayerMarker.X) {

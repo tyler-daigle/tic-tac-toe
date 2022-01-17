@@ -22,23 +22,15 @@ import xIcon from "../assets/icon-x.svg";
 import circleIcon from "../assets/icon-o.svg";
 
 export default function MainGameBoard() {
-  const {
-    nextPlayer,
-    players,
-    getSquare,
-    setSquare,
-    checkForWinner,
-    addWin,
-    addTie,
-    gameDialogVisible,
-    toggleGameDialog,
-    restartGame,
-  } = useContext(GameContext);
+  const { addWin, addTie, restartGame } = useContext(GameContext);
 
-  const {} = useContext(GameContext);
-  const { board } = useContext(BoardContext);
-  const { currentPlayer } = useContext(PlayerContext);
-  const {} = useContext(DialogContext);
+  const { getSquare, setSquare, board, checkForWinner } =
+    useContext(BoardContext);
+
+  const { playerMarkers, nextPlayer, currentPlayer } =
+    useContext(PlayerContext);
+
+  const { toggleGameDialog, gameDialogVisible } = useContext(DialogContext);
 
   const [winningSquares, setWinningSquares] = useState([]);
   const [gameOver, setGameOver] = useState(false);
@@ -71,6 +63,7 @@ export default function MainGameBoard() {
         addTie();
         setIsTie(true);
         setGameOver(true);
+        setWinningSquares([]);
         toggleGameDialog();
         return;
       }
@@ -129,7 +122,7 @@ export default function MainGameBoard() {
         <GameOverDialog>
           <WinningMessage
             winningPlayer={currentWinner}
-            players={players}
+            players={playerMarkers}
             tie={isTie}
           />
 
@@ -165,7 +158,7 @@ function WinningMessage({ winningPlayer, players, tie }) {
     );
   }
 
-  if (players.playerOne.icon === winningPlayer) {
+  if (players.playerOne === winningPlayer) {
     winner = "PLAYER 1";
   } else {
     winner = "PLAYER 2";

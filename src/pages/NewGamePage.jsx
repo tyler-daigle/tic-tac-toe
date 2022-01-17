@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 
-import { GameContext } from "../context/GameContext";
+import { PlayerContext } from "../context/PlayerContext";
 
 import GameContainer from "../components/GameContainer";
 
@@ -16,7 +16,7 @@ import About from "../components/About";
 
 export default function NewGamePage() {
   const navigate = useNavigate();
-  const { setPlayerOneMarker } = useContext(GameContext);
+  const { setPlayerOneMarker } = useContext(PlayerContext);
 
   const handleSelectChange = (selectedPlayerMarker) => {
     setPlayerOneMarker(selectedPlayerMarker);
