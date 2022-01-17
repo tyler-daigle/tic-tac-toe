@@ -1,14 +1,18 @@
 import styles from "../style/ScoreBoard.module.css";
 import { useContext } from "react";
-import { GameContext } from "../context/GameContext";
 import { PlayerMarker } from "../shared/tic-tac-toe";
 
+import { GameContext } from "../context/GameContext";
+import { PlayerContext } from "../context/PlayerContext";
+
 export default function ScoreBoard() {
-  const { score, players } = useContext(GameContext);
+  const { score } = useContext(GameContext);
+  const { playerMarkers } = useContext(PlayerContext);
+
   let playerX;
   let playerCircle;
 
-  if (players.playerOne.icon === PlayerMarker.X) {
+  if (playerMarkers.playerOne === PlayerMarker.X) {
     playerX = "P1";
     playerCircle = "P2";
   } else {

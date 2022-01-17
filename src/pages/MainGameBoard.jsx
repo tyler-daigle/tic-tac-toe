@@ -3,7 +3,12 @@ import styles from "../style/MainGameBoard.module.css";
 import { useNavigate } from "react-router-dom";
 
 import { useContext, useState } from "react";
+
 import { GameContext } from "../context/GameContext";
+import { BoardContext } from "../context/BoardContext";
+import { PlayerContext } from "../context/PlayerContext";
+import { DialogContext } from "../context/DialogContext";
+
 import { PlayerMarker } from "../shared/tic-tac-toe";
 
 import GameSquare from "../components/GameSquare";
@@ -18,8 +23,6 @@ import circleIcon from "../assets/icon-o.svg";
 
 export default function MainGameBoard() {
   const {
-    board,
-    currentPlayer,
     nextPlayer,
     players,
     getSquare,
@@ -31,6 +34,11 @@ export default function MainGameBoard() {
     toggleGameDialog,
     restartGame,
   } = useContext(GameContext);
+
+  const {} = useContext(GameContext);
+  const { board } = useContext(BoardContext);
+  const { currentPlayer } = useContext(PlayerContext);
+  const {} = useContext(DialogContext);
 
   const [winningSquares, setWinningSquares] = useState([]);
   const [gameOver, setGameOver] = useState(false);
