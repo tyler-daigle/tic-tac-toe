@@ -7,17 +7,18 @@ export default function About() {
         padding: "1rem",
       }}
     >
-      This App was created as part of the frontendmentor.io challenge. You can
-      view the source code{" "}
+      This App was created as part of the{" "}
+      <a style={{ color: "white" }} href="https://frontendmentor.io">
+        frontendmentor.io
+      </a>{" "}
+      challenge. You can view the source code{" "}
       <a
         style={{ color: "white" }}
         href="https://github.com/tyler-daigle/tic-tac-toe"
       >
         here
       </a>
-      . It is still a work in progress. Also only the{" "}
-      <strong>NEW GAME (VS PLAYER)</strong> option works. CPU opponent DLC
-      coming soon.
+      .
     </p>
   );
 }

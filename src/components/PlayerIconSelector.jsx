@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import styles from "../style/PlayerIconSelector.module.css";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import oIconGray from "../assets/icon-o-gray.svg";
 import oIconDark from "../assets/icon-o-dark.svg";
@@ -11,6 +11,12 @@ import xIconDark from "../assets/icon-x-dark.svg";
 import { PlayerMarker } from "../shared/tic-tac-toe";
 
 export default function PlayerIconSelector({ onSelected }) {
+  useEffect(() => {
+    // force the dark circle to load
+    const img = new Image();
+    img.src = oIconDark;
+  }, []);
+
   // player 0 is X, player 1 is Circle
   const [selectedIcon, setSelectedIcon] = useState(PlayerMarker.X);
 
