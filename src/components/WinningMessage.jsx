@@ -1,4 +1,6 @@
 import { PlayerMarker } from "../shared/tic-tac-toe";
+import { useContext } from "react";
+import { GameContext } from "../context/GameContext";
 
 import styles from "../style/WinningMessage.module.css";
 
@@ -6,6 +8,7 @@ import xIcon from "../assets/icon-x.svg";
 import circleIcon from "../assets/icon-o.svg";
 
 export default function WinningMessage({ winningPlayer, players, tie }) {
+  const { vsCpu } = useContext(GameContext);
   // find out who is x and who is circle
   let winner = "";
 
@@ -20,9 +23,9 @@ export default function WinningMessage({ winningPlayer, players, tie }) {
   }
 
   if (players.playerOne === winningPlayer) {
-    winner = "PLAYER 1";
+    winner = vsCpu ? "YOU WON!" : "PLAYER 1 WINS!";
   } else {
-    winner = "PLAYER 2";
+    winner = vsCpu ? "OH NO, YOU LOST..." : "PLAYER 2 WINS!";
   }
 
   let message;
@@ -52,7 +55,7 @@ export default function WinningMessage({ winningPlayer, players, tie }) {
 
   return (
     <div className={styles.dialogContent}>
-      <h2 className="heading heading-x-small">{winner} WINS!</h2>
+      <h2 className="heading heading-x-small">{winner}</h2>
       {message}
     </div>
   );

@@ -17,7 +17,7 @@ import oIconSolid from "../assets/icon-o.svg";
 export default function NewGamePage() {
   const navigate = useNavigate();
   const { setPlayerOneMarker } = useContext(PlayerContext);
-  const { setVsCpu, vsCpu } = useContext(GameContext);
+  const { setVsCpu } = useContext(GameContext);
 
   const handleSelectChange = (selectedPlayerMarker) => {
     setPlayerOneMarker(selectedPlayerMarker);

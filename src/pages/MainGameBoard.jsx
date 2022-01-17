@@ -25,7 +25,7 @@ export default function MainGameBoard() {
   const { getSquare, setSquare, board, checkForWinner, getCpuMove } =
     useContext(BoardContext);
 
-  const { playerMarkers, nextPlayer, currentPlayer } =
+  const { playerMarkers, nextPlayer, currentPlayer, resetPlayers } =
     useContext(PlayerContext);
 
   const { toggleGameDialog, gameDialogVisible } = useContext(DialogContext);
@@ -45,13 +45,10 @@ export default function MainGameBoard() {
         const cpuSquare = getCpuMove();
         if (cpuSquare !== undefined) {
           squareClickHandler(cpuSquare);
-          console.log("CPU");
-        } else {
-          console.log("No squares for CPU");
         }
       }
     }
-  }, [currentPlayer]);
+  }, [currentPlayer, vsCpu]);
 
   const squareClickHandler = (squareNum) => {
     if (gameOver) {
@@ -98,6 +95,7 @@ export default function MainGameBoard() {
   const handleNextRoundClick = () => {
     setGameOver(false);
     setIsTie(false);
+    resetPlayers();
     restartGame();
   };
 
