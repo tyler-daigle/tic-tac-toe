@@ -20,7 +20,8 @@ import GameContainer from "../components/GameContainer";
 import WinningMessage from "../components/WinningMessage";
 
 export default function MainGameBoard() {
-  const { vsCpu, addWin, addTie, restartGame } = useContext(GameContext);
+  const { vsCpu, addWin, addTie, restartGame, setVsCpu } =
+    useContext(GameContext);
 
   const { getSquare, setSquare, board, checkForWinner, getCpuMove } =
     useContext(BoardContext);
@@ -48,7 +49,7 @@ export default function MainGameBoard() {
         }
       }
     }
-  }, [currentPlayer, vsCpu]);
+  }, [currentPlayer, vsCpu, gameOver]);
 
   const squareClickHandler = (squareNum) => {
     if (gameOver) {
@@ -89,6 +90,8 @@ export default function MainGameBoard() {
     setGameOver(false);
     restartGame(true);
     setIsTie(false);
+    resetPlayers();
+    setVsCpu(false);
     navigate("/");
   };
 
