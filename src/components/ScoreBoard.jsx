@@ -6,7 +6,7 @@ import { GameContext } from "../context/GameContext";
 import { PlayerContext } from "../context/PlayerContext";
 
 export default function ScoreBoard() {
-  const { score } = useContext(GameContext);
+  const { score, vsCpu } = useContext(GameContext);
   const { playerMarkers } = useContext(PlayerContext);
 
   let playerX;
@@ -14,9 +14,9 @@ export default function ScoreBoard() {
 
   if (playerMarkers.playerOne === PlayerMarker.X) {
     playerX = "P1";
-    playerCircle = "P2";
+    playerCircle = vsCpu ? "CPU" : "P2";
   } else {
-    playerX = "P2";
+    playerX = vsCpu ? "CPU" : "P2";
     playerCircle = "P1";
   }
 

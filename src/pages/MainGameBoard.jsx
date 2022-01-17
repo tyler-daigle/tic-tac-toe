@@ -2,7 +2,7 @@ import styles from "../style/MainGameBoard.module.css";
 
 import { useNavigate } from "react-router-dom";
 
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
 import { GameContext } from "../context/GameContext";
 import { BoardContext } from "../context/BoardContext";
@@ -20,9 +20,9 @@ import GameContainer from "../components/GameContainer";
 import WinningMessage from "../components/WinningMessage";
 
 export default function MainGameBoard() {
-  const { addWin, addTie, restartGame } = useContext(GameContext);
+  const { vsCpu, addWin, addTie, restartGame } = useContext(GameContext);
 
-  const { getSquare, setSquare, board, checkForWinner } =
+  const { getSquare, setSquare, board, checkForWinner, getCpuMove } =
     useContext(BoardContext);
 
   const { playerMarkers, nextPlayer, currentPlayer } =
@@ -35,6 +35,23 @@ export default function MainGameBoard() {
   const [currentWinner, setCurrentWinner] = useState(PlayerMarker.Empty);
   const [isTie, setIsTie] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (vsCpu) {
+      // pick a random square that is empty
+      // activate squareClickHandler on that square
+      // find out which marker is the cpu - cpu is always player 2
+      if (currentPlayer === playerMarkers.playerTwo) {
+        const cpuSquare = getCpuMove();
+        if (cpuSquare !== undefined) {
+          squareClickHandler(cpuSquare);
+          console.log("CPU");
+        } else {
+          console.log("No squares for CPU");
+        }
+      }
+    }
+  }, [currentPlayer]);
 
   const squareClickHandler = (squareNum) => {
     if (gameOver) {

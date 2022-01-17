@@ -10,6 +10,7 @@ export const GameContext = createContext();
 export default function GameProvider({ children }) {
   // state for this context
   const [score, setScore] = useState({ x: 0, circle: 0, ties: 0 });
+  const [vsCpu, setVsCpu] = useState(false);
 
   // state coming from other context
   const { resetBoard } = useContext(BoardContext);
@@ -45,6 +46,8 @@ export default function GameProvider({ children }) {
         score,
         addWin,
         addTie,
+        setVsCpu,
+        vsCpu,
       }}
     >
       {children}

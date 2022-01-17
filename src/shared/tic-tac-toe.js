@@ -33,6 +33,23 @@ class TicTacToe {
     return this.board[squareNum].player;
   }
 
+  getCpuMove() {
+    // Dumb CPU AI
+    // find a square that is empty
+    const emptySquares = [];
+    for (let i = 0; i < this.board.length; i++) {
+      if (this.board[i].player === PlayerMarker.Empty) {
+        emptySquares.push(i);
+      }
+    }
+
+    if (emptySquares.length !== 0) {
+      return emptySquares[Math.floor(Math.random() * emptySquares.length)];
+    }
+
+    // if no empty squares are found
+    return undefined;
+  }
   checkForWinner() {
     // check rows
     if (checkEvery(this.board.slice(0, 3))) {

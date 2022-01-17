@@ -19,6 +19,8 @@ export default function BoardProvider({ children }) {
     setBoard(gameBoard.getBoard());
   };
 
+  const getCpuMove = () => gameBoard.getCpuMove();
+
   return (
     <BoardContext.Provider
       value={{
@@ -27,6 +29,7 @@ export default function BoardProvider({ children }) {
         setSquare,
         checkForWinner,
         resetBoard,
+        getCpuMove,
       }}
     >
       {children}
